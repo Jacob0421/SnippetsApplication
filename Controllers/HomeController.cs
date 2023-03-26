@@ -47,16 +47,19 @@ namespace SnippetsApplication.Controllers
         {
             JsonResponseViewModel model = new JsonResponseViewModel();
             UserSecret userSecretModel = new UserSecret();
+            string returnedSecret = "";
 
-            string returnedSecret = _config[key];
-            
-            if(returnedSecret == null)
-            {
-                model.ResponseCode = -1;
-                model.ErrorMessage = String.Format("No secret found for '{0}'.", key);
-            } else
+            if (!String.IsNullOrEmpty(key)) {
+                returnedSecret = _config[key];
+            }
+
+            if(string.IsNullOrEmpty(returnedSecret))
             {
                 model.ResponseCode = 0;
+                model.ResponseMessage = String.Format("No secret found for '{0}'.", key);
+            } else
+            {
+                model.ResponseCode = 1;
 
                 userSecretModel.UserSecretID = "4dd2d9d5-d5c3-4d88-b94b-6c8569072ea9";
                 userSecretModel.SecretKey = key;
