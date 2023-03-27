@@ -45,5 +45,43 @@ namespace SnippetsApplication.Models.Repositories
             return inputSecret;
 
         }
+
+        public IEnumerable<UserSecret> GetUserSecrets()
+        {
+            string cmd;
+            List<UserSecret> UserSecrets = new List<UserSecret>();
+
+            cmd = "/C dotnet user-secrets list";
+
+            Debug.WriteLine(cmd);
+            Process newCmdProcess = new Process();
+            ProcessStartInfo cmdStartInfo = new ProcessStartInfo();
+                cmdStartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                cmdStartInfo.FileName = "CMD.exe";
+                cmdStartInfo.Arguments = cmd;
+                cmdStartInfo.RedirectStandardOutput = true;
+
+
+            newCmdProcess.StartInfo = cmdStartInfo;
+            newCmdProcess.Start();
+
+            string output = newCmdProcess.StandardOutput.ReadToEnd();
+            newCmdProcess.WaitForExit();
+
+            string[] secrets = output.Trim().Split('\n');
+
+            foreach(string secret in secrets)
+            {
+                UserSecret userSecret = new UserSecret();
+                userSecret.UserSecretID = "4dd2d9d5-d5c3-4d88-b94b-6c8569072ea9";
+                userSecret.SecretKey = secret.Split('=')[0];
+                userSecret.SecretValue = secret.Split('=')[1];
+                userSecret.ProjectLocation = Environment.CurrentDirectory;
+
+                UserSecrets.Add(userSecret);
+            }
+
+            return UserSecrets.AsEnumerable();
+        }
     }
 }

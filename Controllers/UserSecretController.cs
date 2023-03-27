@@ -74,5 +74,10 @@ namespace SnippetsApplication.Controllers
             return Json(model);
         }
 
+        public IActionResult UserSecrets()
+        {
+            return View(_userSecret.GetUserSecrets());
+        }
+
     }
 }
