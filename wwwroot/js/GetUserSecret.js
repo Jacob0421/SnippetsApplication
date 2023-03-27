@@ -1,6 +1,6 @@
 ﻿function GetUserSecret() {
     var inputString = $("#SecretInput").val();
-    var url = '/Home/GetSecret/';
+    var url = '/UserSecret/GetSecret/';
     $.ajax({
         type: 'POST',
         url: url,

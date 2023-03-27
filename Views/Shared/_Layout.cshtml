@@ -27,11 +27,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AddUserSecret">AddUserSecret/cmd call</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="GetUserSecret">GetUserSecret</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="UserSecretDropdown" data-bs-toggle="dropdown">User Secrets</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="UserSecret" asp-action="AddUserSecret">AddUserSecret - cmd</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="UserSecret" asp-action="GetUserSecret">GetUserSecret - Ajax</a>
+                            </div>
                         </li>
                     </ul>
                 </div>
