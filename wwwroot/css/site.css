@@ -13,6 +13,41 @@ html {
   min-height: 100%;
 }
 
+section {
+    padding-top: 3em;
+}
+
 body {
   margin-bottom: 60px;
+}
+
+:root {
+    --primary: #000000/*#edf1d6*/;
+    --secondary: #9dc08b;
+    --tertiary: #609966;
+    --accent: #40513b;
+}
+
+.bg_primary {
+    background-color: var(--primary);
+}
+
+.bg_secondary {
+    background-color: var(--secondary);
+}
+
+.bg_tertiary {
+    background-color: var(--tertiary);
+}
+
+.bg_accent {
+    background-color: var(--accent);
+}
+
+a:link{
+    color: var(--accent);
+}
+
+.txt_primary {
+    color: var(--primary);
 }

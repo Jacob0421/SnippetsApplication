@@ -24,25 +24,30 @@ namespace SnippetsApplication.Controllers
 
         public IActionResult Index()
         {
-            XmlDocument csproj = new XmlDocument();
-            csproj.Load(Environment.CurrentDirectory + "\\SnippetsApplication.csproj");
-            if (csproj.DocumentElement != null) {
-                XmlNode targetNode = csproj.SelectSingleNode("//UserSecretsId");
+            //XmlDocument csproj = new XmlDocument();
+            //csproj.Load(Environment.CurrentDirectory + "\\SnippetsApplication.csproj");
+            //if (csproj.DocumentElement != null) {
+            //    XmlNode targetNode = csproj.SelectSingleNode("//UserSecretsId");
 
-                if (targetNode != null)
-                {
-                    UserSecret newSecret = new UserSecret()
-                    {
-                        UserSecretID = targetNode.InnerText,
-                        SecretKey = "UserSecretId",
-                        SecretValue = targetNode.InnerText
-                    };
+            //    if (targetNode != null)
+            //    {
 
-                    _userSecretRepository.AddUserSecret(newSecret);
-                }
-            }
+            //        return View("AddUserSecretId");
+            //        //UserSecret newSecret = new UserSecret()
+            //        //{
+            //        //    UserSecretID = targetNode.InnerText,
+            //        //    SecretKey = "UserSecretId",
+            //        //    SecretValue = targetNode.InnerText
+            //        //};
 
-            return View();
+            //        //_userSecretRepository.AddUserSecret(newSecret);
+            //    } else
+            //    {
+            //        return View("InitializeUserSecrets");
+            //    }
+            //}
+
+            return RedirectToAction("AddUserSecretId","UserSecret");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -79,5 +79,9 @@ namespace SnippetsApplication.Controllers
             return View(_userSecret.GetUserSecrets());
         }
 
+        public IActionResult AddUserSecretId() {
+            return View();
+        }
+
     }
 }
